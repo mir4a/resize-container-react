@@ -4,8 +4,8 @@ import { ReactComponent as ArrowNS } from "../icons/ArrowNS.svg";
 import "./ResizeHeightHandle.css";
 
 export interface ResizeHeightHandleProps {
-  onDrag: ({ deltaY }: { deltaY?: number }) => void;
-  onDragEnd: () => void;
+  onDrag?: ({ deltaY }: { deltaY?: number }) => void;
+  onDragEnd?: () => void;
   children?: React.ReactNode;
 }
 

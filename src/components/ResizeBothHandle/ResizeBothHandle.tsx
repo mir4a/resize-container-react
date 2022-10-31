@@ -4,8 +4,8 @@ import { ReactComponent as ArrowNWSE } from "../icons/ArrowNWSE.svg";
 import "./ResizeBothHandle.css";
 
 export interface ResizeBothHandleProps {
-  onDrag: ({ deltaX, deltaY }: { deltaX?: number; deltaY?: number }) => void;
-  onDragEnd: () => void;
+  onDrag?: ({ deltaX, deltaY }: { deltaX?: number; deltaY?: number }) => void;
+  onDragEnd?: () => void;
   children?: React.ReactNode;
 }
 

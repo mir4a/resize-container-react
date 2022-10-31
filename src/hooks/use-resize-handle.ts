@@ -7,8 +7,8 @@ export enum ResizeType {
 }
 
 export interface UseResizeHandleProps {
-  onDrag: ({ deltaX, deltaY }: { deltaX?: number; deltaY?: number }) => void;
-  onDragEnd: () => void;
+  onDrag?: ({ deltaX, deltaY }: { deltaX?: number; deltaY?: number }) => void;
+  onDragEnd?: () => void;
   resizeType: ResizeType;
 }
 

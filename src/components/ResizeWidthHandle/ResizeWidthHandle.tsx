@@ -4,8 +4,8 @@ import { ReactComponent as ArrowWE } from "../icons/ArrowWE.svg";
 import "./ResizeWidthHandle.css";
 
 export interface ResizeWidthHandleProps {
-  onDrag: ({ deltaX }: { deltaX?: number }) => void;
-  onDragEnd: () => void;
+  onDrag?: ({ deltaX }: { deltaX?: number }) => void;
+  onDragEnd?: () => void;
   children?: React.ReactNode;
 }
 
