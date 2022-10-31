@@ -6,7 +6,3 @@
 .resize-height-handle:hover {
   cursor: ns-resize;
 }
-
-.resize-height-handle svg {
-  transform: rotate(-45deg);
-}

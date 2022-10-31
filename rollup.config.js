@@ -5,6 +5,8 @@ import dts from "rollup-plugin-dts";
 import packageJson from "./package.json" assert { type: "json" };
 import postcss from "rollup-plugin-postcss";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import svgr from "@svgr/rollup";
+import url from "@rollup/plugin-url";
 
 export default [
   {
@@ -27,6 +29,8 @@ export default [
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
       postcss(),
+      url(),
+      svgr(),
     ],
   },
   {

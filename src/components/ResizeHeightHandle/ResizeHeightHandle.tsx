@@ -1,5 +1,7 @@
+/// <reference types="vite-plugin-svgr/client" />
+
 import * as React from "react";
-import { ArrowSWNE } from "../icons";
+import { ReactComponent as ArrowNS } from "../icons/ArrowNS.svg";
 import "./ResizeHeightHandle.css";
 
 export interface ResizeHeightHandleProps {
@@ -38,7 +40,7 @@ const ResizeHeightHandle: React.FC<ResizeHeightHandleProps> = ({
 
   return (
     <div className="resize-handle resize-height-handle" ref={ref}>
-      {children ? children : <ArrowSWNE />}
+      {children ? children : <ArrowNS />}
     </div>
   );
 };
