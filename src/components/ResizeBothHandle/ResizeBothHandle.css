@@ -1,0 +1,8 @@
+.resize-both-handle {
+  right: calc(var(--resize-handle-size) / -2);
+  bottom: calc(var(--resize-handle-size) / -2);
+}
+
+.resize-both-handle:hover {
+  cursor: nwse-resize;
+}

@@ -1,4 +1,5 @@
 import * as React from "react";
+import ResizeBothHandle from "../ResizeBothHandle";
 import ResizeHeightHandle from "../ResizeHeightHandle";
 import ResizeWidthHandle from "../ResizeWidthHandle";
 
@@ -70,6 +71,7 @@ const ResizeContainer: React.FC<ResizeContainerProps> = ({ children }) => {
       {children}
       <ResizeHeightHandle onDrag={onResizeHeight} onDragEnd={onDragEnd} />
       <ResizeWidthHandle onDrag={onResizeWidth} onDragEnd={onDragEnd} />
+      <ResizeBothHandle onDrag={onResizeBoth} onDragEnd={onDragEnd} />
     </div>
   );
 };
