@@ -1,9 +1,10 @@
 import * as React from "react";
+import useResizeHandle, { ResizeType } from "../../hooks/use-resize-handle";
 import { ReactComponent as ArrowNS } from "../icons/ArrowNS.svg";
 import "./ResizeHeightHandle.css";
 
 export interface ResizeHeightHandleProps {
-  onDrag: ({ deltaY }: { deltaY: number }) => void;
+  onDrag: ({ deltaY }: { deltaY?: number }) => void;
   onDragEnd: () => void;
   children?: React.ReactNode;
 }
@@ -13,41 +14,11 @@ const ResizeHeightHandle: React.FC<ResizeHeightHandleProps> = ({
   onDrag,
   onDragEnd,
 }) => {
-  const ref = React.useRef<HTMLDivElement>(null);
-  React.useLayoutEffect(() => {
-    if (ref.current) {
-      ref.current.onmousedown = (e) => {
-        e.preventDefault();
-        const currentPositionY = e.pageY;
-
-        function onMouseMove(mouseMoveEvent: MouseEvent) {
-          const deltaY = mouseMoveEvent.pageY - currentPositionY;
-          onDrag({ deltaY });
-        }
-
-        document.addEventListener("mousemove", onMouseMove);
-
-        document.onmouseleave = (mouseLeaveEvent: MouseEvent) => {
-          if (
-            mouseLeaveEvent.clientY <= 0 ||
-            mouseLeaveEvent.clientX <= 0 ||
-            mouseLeaveEvent.clientX >= window.innerWidth ||
-            mouseLeaveEvent.clientY >= window.innerHeight
-          ) {
-            document.removeEventListener("mousemove", onMouseMove);
-            document.onmouseleave = null;
-            onDragEnd();
-          }
-        };
-
-        document.onmouseup = () => {
-          document.removeEventListener("mousemove", onMouseMove);
-          document.onmouseup = null;
-          onDragEnd();
-        };
-      };
-    }
-  }, [onDrag, onDragEnd]);
+  const ref = useResizeHandle({
+    onDrag,
+    onDragEnd,
+    resizeType: ResizeType.Height,
+  });
 
   return (
     <div className="resize-handle resize-height-handle" ref={ref}>
