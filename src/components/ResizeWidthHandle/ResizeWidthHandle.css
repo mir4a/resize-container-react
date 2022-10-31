@@ -1,0 +1,8 @@
+.resize-width-handle {
+  right: calc(var(--resize-handle-size) / -2);
+  top: calc(50% - calc(var(--resize-handle-size) / 2));
+}
+
+.resize-width-handle:hover {
+  cursor: ew-resize;
+}
