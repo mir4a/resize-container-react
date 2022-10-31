@@ -7,7 +7,7 @@ export interface ResizeContainerProps {
 }
 
 const ResizeContainer: React.FC<ResizeContainerProps> = ({ children }) => {
-  return <div className="resize-container">{children}</div>;
+  return <div className="resize-container">{children} hey</div>;
 };
 
 export default ResizeContainer;
