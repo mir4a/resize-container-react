@@ -1,0 +1,24 @@
+{
+  "name": "resize-container-react",
+  "version": "1.0.0",
+  "description": "Resizeable component for wrapping any content",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mir4a/resize-container-react.git"
+  },
+  "keywords": [
+    "resize",
+    "component",
+    "react"
+  ],
+  "author": "Miroslav Martynov <marty.mircha@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mir4a/resize-container-react/issues"
+  },
+  "homepage": "https://github.com/mir4a/resize-container-react#readme"
+}
