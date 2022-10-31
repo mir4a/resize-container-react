@@ -16,18 +16,34 @@ const ResizeContainer: React.FC<ResizeContainerProps> = ({ children }) => {
   const [height, setHeight] = React.useState<number | undefined>(() =>
     ref.current ? ref.current.offsetHeight : undefined
   );
+  const [prevHeight, setPrevHeight] = React.useState<number | undefined>(() =>
+    ref.current ? ref.current.offsetHeight : undefined
+  );
+
+  React.useLayoutEffect(() => {
+    if (ref.current) {
+      setPrevHeight(ref.current.offsetHeight);
+    }
+  }, []);
 
   const onDrag = ({ deltaY }: { deltaY: number }) => {
-    if (ref.current) {
+    if (ref.current && prevHeight) {
       console.log("onDrag", deltaY);
-      deltaY && setHeight(ref.current.offsetHeight + deltaY);
+      deltaY && setHeight(prevHeight + deltaY);
+    }
+  };
+
+  const onDragEnd = () => {
+    console.log("onDragEnd");
+    if (ref.current) {
+      setPrevHeight(ref.current.offsetHeight);
     }
   };
 
   return (
     <div className="resize-container" ref={ref} style={{ height }}>
       {children}
-      <ResizeHeightHandle onDrag={onDrag} onDragEnd={() => {}} />
+      <ResizeHeightHandle onDrag={onDrag} onDragEnd={onDragEnd} />
     </div>
   );
 };
