@@ -27,6 +27,19 @@ const ResizeWidthHandle: React.FC<ResizeWidthHandleProps> = ({
 
         document.addEventListener("mousemove", onMouseMove);
 
+        document.onmouseleave = (mouseLeaveEvent: MouseEvent) => {
+          if (
+            mouseLeaveEvent.clientY <= 0 ||
+            mouseLeaveEvent.clientX <= 0 ||
+            mouseLeaveEvent.clientX >= window.innerWidth ||
+            mouseLeaveEvent.clientY >= window.innerHeight
+          ) {
+            document.removeEventListener("mousemove", onMouseMove);
+            document.onmouseleave = null;
+            onDragEnd();
+          }
+        };
+
         document.onmouseup = () => {
           document.removeEventListener("mousemove", onMouseMove);
           document.onmouseup = null;
