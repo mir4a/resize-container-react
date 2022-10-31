@@ -12,10 +12,22 @@ export interface ResizeContainerProps {
 }
 
 const ResizeContainer: React.FC<ResizeContainerProps> = ({ children }) => {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [height, setHeight] = React.useState<number | undefined>(() =>
+    ref.current ? ref.current.offsetHeight : undefined
+  );
+
+  const onDrag = ({ deltaY }: { deltaY: number }) => {
+    if (ref.current) {
+      console.log("onDrag", deltaY);
+      deltaY && setHeight(ref.current.offsetHeight + deltaY);
+    }
+  };
+
   return (
-    <div className="resize-container">
+    <div className="resize-container" ref={ref} style={{ height }}>
       {children}
-      <ResizeHeightHandle onDrag={() => {}} onDragEnd={() => {}} />
+      <ResizeHeightHandle onDrag={onDrag} onDragEnd={() => {}} />
     </div>
   );
 };
