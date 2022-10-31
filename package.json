@@ -2,10 +2,17 @@
   "name": "resize-container-react",
   "version": "1.0.0",
   "description": "Resizeable component for wrapping any content",
-  "main": "index.js",
   "scripts": {
+    "rollup": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/mir4a/resize-container-react.git"
@@ -22,8 +29,17 @@
   },
   "homepage": "https://github.com/mir4a/resize-container-react#readme",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^9.0.2",
     "@types/react": "^18.0.24",
     "react": "^18.2.0",
+    "rollup": "^3.2.3",
+    "rollup-plugin-dts": "^5.0.0",
+    "tslib": "^2.4.0",
     "typescript": "^4.8.4"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
   }
 }
