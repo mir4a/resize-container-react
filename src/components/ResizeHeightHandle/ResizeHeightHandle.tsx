@@ -1,5 +1,3 @@
-/// <reference types="vite-plugin-svgr/client" />
-
 import * as React from "react";
 import { ReactComponent as ArrowNS } from "../icons/ArrowNS.svg";
 import "./ResizeHeightHandle.css";
