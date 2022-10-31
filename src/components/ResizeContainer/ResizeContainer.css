@@ -1,5 +1,23 @@
+.resize-container * {
+  box-sizing: border-box;
+}
+
 .resize-container {
+  --resize-handle-size: 30px;
+
   border: 1px solid black;
   width: 50%;
   position: relative;
+}
+
+.resize-handle {
+  background-color: #000;
+  position: absolute;
+  padding: 5px;
+  width: var(--resize-handle-size);
+  height: var(--resize-handle-size);
+}
+
+.resize-handle svg {
+  fill: #fff;
 }

@@ -1,0 +1,12 @@
+.resize-height-handle {
+  bottom: calc(var(--resize-handle-size) / -2);
+  left: calc(50% - calc(var(--resize-handle-size) / 2));
+}
+
+.resize-height-handle:hover {
+  cursor: ns-resize;
+}
+
+.resize-height-handle svg {
+  transform: rotate(-45deg);
+}
