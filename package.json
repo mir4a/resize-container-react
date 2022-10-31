@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/mir4a"
   },
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Resizeable component for wrapping any content",
   "scripts": {
     "rollup": "rollup -c",
