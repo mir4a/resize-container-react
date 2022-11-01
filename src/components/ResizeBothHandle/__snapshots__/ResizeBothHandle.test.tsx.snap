@@ -4,6 +4,7 @@ exports[`ResizeBothHandle matches snapshot 1`] = `
 <div>
   <div
     class="resize-handle resize-both-handle"
+    data-testid="resize-both-handle"
   >
     <div />
   </div>

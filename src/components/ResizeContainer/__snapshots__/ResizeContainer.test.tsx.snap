@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResizeContainer does resize 1`] = `
+<div>
+  <div
+    class="resize-container"
+    data-testid="resize-container"
+  >
+    <div>
+      Resize me!
+    </div>
+    <div
+      class="resize-handle resize-both-handle"
+      data-testid="resize-both-handle"
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;

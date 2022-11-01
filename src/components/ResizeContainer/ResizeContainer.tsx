@@ -70,6 +70,7 @@ const ResizeContainer: React.FC<ResizeContainerProps> = ({
   return (
     <div
       className="resize-container"
+      data-testid="resize-container"
       ref={ref}
       style={{ ...style, height, width }}
     >

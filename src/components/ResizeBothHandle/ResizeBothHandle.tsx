@@ -21,7 +21,11 @@ const ResizeBothHandle: React.FC<ResizeBothHandleProps> = ({
   });
 
   return (
-    <div className="resize-handle resize-both-handle" ref={ref}>
+    <div
+      className="resize-handle resize-both-handle"
+      ref={ref}
+      data-testid="resize-both-handle"
+    >
       {children ?? <ArrowNWSE />}
     </div>
   );

@@ -10,12 +10,13 @@ describe("ResizeContainer", () => {
   });
 
   it("does resize", () => {
-    render(
+    const { container } = render(
       <ResizeContainer>
         <div>Resize me!</div>
         <ResizeBothHandle />
       </ResizeContainer>
     );
-    // expect(container).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });
