@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResizeBothHandle matches snapshot 1`] = `
+<div>
+  <div
+    class="resize-handle resize-both-handle"
+  >
+    <div />
+  </div>
+</div>
+`;
