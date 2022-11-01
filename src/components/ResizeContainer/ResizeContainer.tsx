@@ -74,13 +74,9 @@ const ResizeContainer: React.FC<ResizeContainerProps> = ({
       style={{ ...style, height, width }}
     >
       {React.Children.map(children, (child) => {
-        console.log(child);
-        if (
-          child &&
-          child.hasOwnProperty("type") &&
-          allowedChildrenType.includes(child.type)
-        ) {
-          return React.cloneElement(child, {
+        // @ts-ingnore: stuck on this
+        if (allowedChildrenType.includes(child?.type)) {
+          return React.cloneElement(child as any, {
             onDrag,
             onDragEnd,
           });

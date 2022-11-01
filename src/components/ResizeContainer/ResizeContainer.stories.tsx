@@ -104,3 +104,35 @@ export const WithPlentyOfContent = () => {
     </ResizeContainer>
   );
 };
+
+export const WithDifferentTypesOfChildren = () => {
+  return (
+    <ResizeContainer>
+      <div>Resize me!</div>
+      <ResizeBothHandle />
+      <ResizeHeightHandle />
+      <ResizeWidthHandle />
+      <div>Resize me too!</div>
+      {"just string"}
+      <b>below is null</b>
+      <br />
+      {null}
+      <br />
+      <b>above is null</b>
+      <br />
+      <i>below is undefined</i>
+      <br />
+      {undefined}
+      <br />
+      <i>above is undefined</i>
+      <br />
+      <b>below is false</b>
+      <br />
+      {false}
+      <br />
+      <b>above is false</b>
+      <br />
+      <img src="https://picsum.photos/200" alt="random" />
+    </ResizeContainer>
+  );
+};

@@ -29,16 +29,18 @@ const useResizeHandle = ({
           const deltaX = mouseMoveEvent.pageX - currentPositionX;
           const deltaY = mouseMoveEvent.pageY - currentPositionY;
 
-          if (resizeType === ResizeType.Height) {
-            onDrag({ deltaY });
-          }
+          if (onDrag) {
+            if (resizeType === ResizeType.Height) {
+              onDrag({ deltaY });
+            }
 
-          if (resizeType === ResizeType.Width) {
-            onDrag({ deltaX });
-          }
+            if (resizeType === ResizeType.Width) {
+              onDrag({ deltaX });
+            }
 
-          if (resizeType === ResizeType.Both) {
-            onDrag({ deltaX, deltaY });
+            if (resizeType === ResizeType.Both) {
+              onDrag({ deltaX, deltaY });
+            }
           }
         }
 
@@ -53,14 +55,14 @@ const useResizeHandle = ({
           ) {
             document.removeEventListener("mousemove", onMouseMove);
             document.onmouseleave = null;
-            onDragEnd();
+            onDragEnd?.();
           }
         };
 
         document.onmouseup = () => {
           document.removeEventListener("mousemove", onMouseMove);
           document.onmouseup = null;
-          onDragEnd();
+          onDragEnd?.();
         };
       };
     }
