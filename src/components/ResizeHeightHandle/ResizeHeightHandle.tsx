@@ -22,7 +22,7 @@ const ResizeHeightHandle: React.FC<ResizeHeightHandleProps> = ({
 
   return (
     <div className="resize-handle resize-height-handle" ref={ref}>
-      {children ? children : <ArrowNS />}
+      {children ?? <ArrowNS />}
     </div>
   );
 };

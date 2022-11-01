@@ -22,7 +22,7 @@ const ResizeWidthHandle: React.FC<ResizeWidthHandleProps> = ({
 
   return (
     <div className="resize-handle resize-width-handle" ref={ref}>
-      {children ? children : <ArrowWE />}
+      {children ?? <ArrowWE />}
     </div>
   );
 };

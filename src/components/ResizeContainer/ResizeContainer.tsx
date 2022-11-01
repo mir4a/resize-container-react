@@ -15,10 +15,10 @@ export interface ResizeContainerProps {
   onResizeEnd?: () => void;
 }
 
-export type DragParams = {
+export interface DragParams {
   deltaX?: number;
   deltaY?: number;
-};
+}
 
 const ResizeContainer: React.FC<ResizeContainerProps> = ({
   children,
@@ -28,34 +28,34 @@ const ResizeContainer: React.FC<ResizeContainerProps> = ({
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const [height, setHeight] = React.useState<number | undefined>(() =>
-    ref.current ? ref.current.offsetHeight : initialHeight ?? undefined
+    ref.current != null ? ref.current.offsetHeight : initialHeight ?? undefined
   );
   const [width, setWidth] = React.useState<number | undefined>(() =>
-    ref.current ? ref.current.offsetWidth : initialWidth ?? undefined
+    ref.current != null ? ref.current.offsetWidth : initialWidth ?? undefined
   );
   const [prevHeight, setPrevHeight] = React.useState<number | undefined>(() =>
-    ref.current ? ref.current.offsetHeight : initialHeight ?? undefined
+    ref.current != null ? ref.current.offsetHeight : initialHeight ?? undefined
   );
   const [prevWidth, setPrevWidth] = React.useState<number | undefined>(() =>
-    ref.current ? ref.current.offsetWidth : initialWidth ?? undefined
+    ref.current != null ? ref.current.offsetWidth : initialWidth ?? undefined
   );
 
   React.useLayoutEffect(() => {
-    if (ref.current) {
+    if (ref.current != null) {
       setPrevHeight(ref.current.offsetHeight);
       setPrevWidth(ref.current.offsetWidth);
     }
   }, []);
 
-  const onDrag = ({ deltaX, deltaY }: DragParams) => {
-    if (ref.current) {
-      deltaX && prevWidth && setWidth(prevWidth + deltaX);
-      deltaY && prevHeight && setHeight(prevHeight + deltaY);
+  const onDrag = ({ deltaX, deltaY }: DragParams): void => {
+    if (ref.current != null) {
+      deltaX != null && prevWidth != null && setWidth(prevWidth + deltaX);
+      deltaY != null && prevHeight != null && setHeight(prevHeight + deltaY);
     }
   };
 
-  const onDragEnd = () => {
-    if (ref.current) {
+  const onDragEnd = (): void => {
+    if (ref.current != null) {
       setPrevHeight(ref.current.offsetHeight);
       setPrevWidth(ref.current.offsetWidth);
     }
@@ -74,7 +74,7 @@ const ResizeContainer: React.FC<ResizeContainerProps> = ({
       style={{ ...style, height, width }}
     >
       {React.Children.map(children, (child) => {
-        // @ts-ingnore: stuck on this
+        // @ts-expect-error: TODO: fix this
         if (allowedChildrenType.includes(child?.type)) {
           return React.cloneElement(child as any, {
             onDrag,

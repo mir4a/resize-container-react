@@ -19,17 +19,17 @@ const useResizeHandle = ({
 }: UseResizeHandleProps): React.RefObject<HTMLDivElement> => {
   const ref = React.useRef<HTMLDivElement>(null);
   React.useLayoutEffect(() => {
-    if (ref.current) {
+    if (ref.current != null) {
       ref.current.onmousedown = (e) => {
         e.preventDefault();
         const currentPositionX = e.pageX;
         const currentPositionY = e.pageY;
 
-        function onMouseMove(mouseMoveEvent: MouseEvent) {
+        function onMouseMove(mouseMoveEvent: MouseEvent): void {
           const deltaX = mouseMoveEvent.pageX - currentPositionX;
           const deltaY = mouseMoveEvent.pageY - currentPositionY;
 
-          if (onDrag) {
+          if (onDrag != null) {
             if (resizeType === ResizeType.Height) {
               onDrag({ deltaY });
             }
