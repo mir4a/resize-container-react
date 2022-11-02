@@ -7,6 +7,7 @@
   "description": "Resizeable component for wrapping any content",
   "scripts": {
     "rollup": "rollup -c --bundleConfigAsCjs",
+    "build": "NODE_ENV=production npm run rollup",
     "test:ci": "jest --ci --coverage",
     "test": "jest --watch",
     "coverage": "jest --coverage",
@@ -16,7 +17,7 @@
     "stories": "ladle serve",
     "stories:build": "ladle build",
     "e2e": "npm run stories & npm run cypress:run",
-    "prepare": "npm run rollup"
+    "prepare": "npm run build"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
