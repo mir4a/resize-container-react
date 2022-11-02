@@ -12,7 +12,7 @@ export const Isolated = () => {
   );
 };
 
-export const WithHandles = () => {
+export const AllHandles = () => {
   return (
     <ResizeContainer>
       <div>Resize me!</div>
@@ -39,7 +39,7 @@ export const CustomStyles = () => {
   );
 };
 
-export const WithOneHandle = () => {
+export const OneHandle = () => {
   return (
     <ResizeContainer>
       <div>Resize me!</div>
@@ -48,7 +48,7 @@ export const WithOneHandle = () => {
   );
 };
 
-export const WithTwoHandles = () => {
+export const TwoHandles = () => {
   return (
     <ResizeContainer>
       <div>Resize me!</div>
@@ -58,7 +58,40 @@ export const WithTwoHandles = () => {
   );
 };
 
-export const WithInitialSize = () => {
+export const CustomHandles = () => {
+  return (
+    <ResizeContainer>
+      <div>{"WOW, GIPHY icons as a handler :))))"}</div>
+      <ResizeWidthHandle
+        style={{
+          backgroundColor: "transparent",
+        }}
+      >
+        <div
+          style={{
+            width: "100%",
+            height: 0,
+            paddingBottom: "78%",
+            position: "relative",
+            pointerEvents: "none",
+          }}
+        >
+          <iframe
+            src="https://giphy.com/embed/NU4il2utBo5Lq"
+            width="100%"
+            height="100%"
+            style={{ position: "absolute" }}
+            frameBorder="0"
+            className="giphy-embed"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </ResizeWidthHandle>
+    </ResizeContainer>
+  );
+};
+
+export const InitialSize = () => {
   return (
     <ResizeContainer initialWidth={200} initialHeight={200}>
       <div>Resize me!</div>
@@ -67,7 +100,7 @@ export const WithInitialSize = () => {
   );
 };
 
-export const WithPlentyOfContent = () => {
+export const PlentyOfContent = () => {
   return (
     <ResizeContainer>
       <div>
@@ -105,7 +138,7 @@ export const WithPlentyOfContent = () => {
   );
 };
 
-export const WithDifferentTypesOfChildren = () => {
+export const DifferentChildren = () => {
   return (
     <ResizeContainer>
       <div>Resize me!</div>
@@ -137,7 +170,7 @@ export const WithDifferentTypesOfChildren = () => {
   );
 };
 
-export const WithOverflowAutoContent = () => {
+export const OverflowAutoContent = () => {
   return (
     <ResizeContainer>
       <div

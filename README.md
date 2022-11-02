@@ -61,6 +61,8 @@ const App = () => {
 
 ### RTL
 
+> automatic detection is not supported yet
+
 ```jsx
 import React from 'react'
 import {ResizeContainer, ResizeBothHandle} from '@mir4a/resize-container-react'
