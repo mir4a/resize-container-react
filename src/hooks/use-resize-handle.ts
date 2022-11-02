@@ -10,12 +10,14 @@ export interface UseResizeHandleProps {
   onDrag?: ({ deltaX, deltaY }: { deltaX?: number; deltaY?: number }) => void;
   onDragEnd?: () => void;
   resizeType: ResizeType;
+  isRTL?: boolean;
 }
 
 const useResizeHandle = ({
   onDrag,
   onDragEnd,
   resizeType,
+  isRTL = false,
 }: UseResizeHandleProps): React.RefObject<HTMLDivElement> => {
   const ref = React.useRef<HTMLDivElement>(null);
   React.useLayoutEffect(() => {
@@ -26,7 +28,20 @@ const useResizeHandle = ({
         const currentPositionY = e.pageY;
 
         function onMouseMove(mouseMoveEvent: MouseEvent): void {
-          const deltaX = mouseMoveEvent.pageX - currentPositionX;
+          let deltaX: number;
+
+          if (isRTL) {
+            // took some time to figure out direction here XD
+            if (mouseMoveEvent.pageX > currentPositionX) {
+              deltaX = -(mouseMoveEvent.pageX - currentPositionX);
+            } else if (mouseMoveEvent.pageX === currentPositionX) {
+              deltaX = 0;
+            } else {
+              deltaX = currentPositionX - mouseMoveEvent.pageX;
+            }
+          } else {
+            deltaX = mouseMoveEvent.pageX - currentPositionX;
+          }
           const deltaY = mouseMoveEvent.pageY - currentPositionY;
 
           if (onDrag != null) {

@@ -3,6 +3,16 @@
   bottom: calc(var(--resize-handle-size) / -2);
 }
 
+.resize-both-handle.rtl {
+  right: unset;
+  left: calc(var(--resize-handle-size) / -2);
+  bottom: calc(var(--resize-handle-size) / -2);
+}
+
 .resize-both-handle:hover {
   cursor: nwse-resize;
+}
+
+.resize-both-handle.rtl:hover {
+  cursor: nesw-resize;
 }

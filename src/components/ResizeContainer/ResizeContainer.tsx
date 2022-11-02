@@ -10,8 +10,8 @@ export interface ResizeContainerProps {
   style?: React.CSSProperties;
   initialWidth?: number;
   initialHeight?: number;
+  isRTL?: boolean;
   onResize?: () => void;
-  onResizeStart?: () => void;
   onResizeEnd?: () => void;
 }
 
@@ -23,6 +23,7 @@ export interface DragParams {
 const ResizeContainer: React.FC<ResizeContainerProps> = ({
   children,
   style,
+  isRTL = false,
   initialWidth,
   initialHeight,
 }) => {
@@ -55,6 +56,7 @@ const ResizeContainer: React.FC<ResizeContainerProps> = ({
   };
 
   const onDragEnd = (): void => {
+    console.log("onDragEnd");
     if (ref.current != null) {
       setPrevHeight(ref.current.offsetHeight);
       setPrevWidth(ref.current.offsetWidth);
@@ -80,6 +82,7 @@ const ResizeContainer: React.FC<ResizeContainerProps> = ({
           return React.cloneElement(child as any, {
             onDrag,
             onDragEnd,
+            isRTL,
           });
         }
         return child;

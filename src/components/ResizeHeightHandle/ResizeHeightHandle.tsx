@@ -4,24 +4,29 @@ import { ReactComponent as ArrowNS } from "../icons/ArrowNS.svg";
 import "./ResizeHeightHandle.css";
 
 export interface ResizeHeightHandleProps {
+  children?: React.ReactNode;
+  isRTL?: boolean;
   onDrag?: ({ deltaY }: { deltaY?: number }) => void;
   onDragEnd?: () => void;
-  children?: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 const ResizeHeightHandle: React.FC<ResizeHeightHandleProps> = ({
   children,
+  isRTL = false,
   onDrag,
   onDragEnd,
+  style,
 }) => {
   const ref = useResizeHandle({
+    isRTL,
     onDrag,
     onDragEnd,
     resizeType: ResizeType.Height,
   });
 
   return (
-    <div className="resize-handle resize-height-handle" ref={ref}>
+    <div className="resize-handle resize-height-handle" ref={ref} style={style}>
       {children ?? <ArrowNS />}
     </div>
   );
