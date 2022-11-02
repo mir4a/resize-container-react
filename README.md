@@ -1,6 +1,6 @@
 # Resize Container React
 
-A simple React component to resize a container. Fully customizable.
+A simple React component to resize a container. Fully customizable. Zero dependencies.
 
 ## Installation
 
@@ -99,8 +99,8 @@ const App = () => {
 | style? | CSSProperties | {} | any css styles |
 | initialWidth? | number | undefined | Initial width of the container |
 | initialHeight? | number | undefined | Initial height of the container |
-| onResize? | (width: number, height: number) => void | undefined | Callback function fired while container is resizing |
-| onResizeEnd? | (width: number, height: number) => void | undefined | Callback function when the container is resized |
+| onResize? | ({width: number, height: number}) => void | undefined | Callback function fired while container is resizing |
+| onResizeEnd? | ({width: number, height: number}) => void | undefined | Callback function when the container is resized |
 
 ### ResizeBothHandle
 
@@ -122,6 +122,10 @@ const App = () => {
 | --- | --- | --- | --- |
 | children? | ReactNode | null | custom icon or whatever component to use as resize handle |
 | style? | CSSProperties | {} | override default position and other styles |
+
+## Known Issues
+1. Children containing image will cause the container's height to jump during resizing.
+2. `onResize` callback returns negative values when resizing collapses the container.
 
 ## License
 
