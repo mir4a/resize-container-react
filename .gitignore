@@ -1,6 +1,9 @@
 node_modules
 
+# package build directory
 dist
+# stories build directory
+build
 coverage
 
 cypress/videos
