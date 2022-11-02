@@ -3,6 +3,7 @@ node_modules
 dist
 coverage
 
+cypress/videos
 
 # OS crap
 .DS_Store
