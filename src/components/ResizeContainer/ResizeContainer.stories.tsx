@@ -136,3 +136,64 @@ export const WithDifferentTypesOfChildren = () => {
     </ResizeContainer>
   );
 };
+
+export const WithOverflowAutoContent = () => {
+  return (
+    <ResizeContainer>
+      <div
+        style={{
+          width: "inherit",
+          height: "inherit",
+          overflow: "auto",
+          border: "1px solid transparent",
+        }}
+      >
+        <h1>Resize me!</h1>
+        <p style={{ float: "left" }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+          ultrices, arcu id sagittis rhoncus, mauris sapien vehicula nisl, ut
+          aliquet orci libero ut nunc. Sed in nunc ut turpis ultrices aliquet.
+          Nullam euismod, sem a luctus pretium, orci nisl ultrices tellus, vitae
+          aliquam nisl nisl quis orci. Proin vel erat sed ipsum ultrices
+          vestibulum. Nullam auctor, justo nec aliquam ultrices, ante nisi
+          sagittis felis, eu aliquet nisl nisl eu lectus. Sed euismod, velit
+          quis lacinia placerat, nisl nisl tincidunt lorem, nec tincidunt elit
+          massa non nisl. Nulla facilisi. Fusce euismod, justo sed ultricies
+          luctus, augue nisl aliquam enim, ac convallis nisl lorem quis erat.
+          Nullam euismod, sem a luctus pretium, orci nisl ultrices tellus, vitae
+          aliquam nisl nisl quis orci. Proin vel erat sed ipsum ultrices
+          vestibulum. Nullam auctor, justo nec aliquam ultrices, ante nisi
+          sagittis felis, eu aliquet nisl nisl eu lectus. Sed euismod, velit
+          quis lacinia placerat, nisl nisl tincidunt lorem, nec tincidunt elit
+          massa non nisl. Nulla facilisi. Fusce euismod, justo sed ultricies
+          luctus, augue nisl aliquam enim, ac convallis nisl lorem quis erat.
+          Nullam euismod, sem a luctus pretium, orci nisl ultrices tellus, vitae
+        </p>
+        <img
+          src="https://picsum.photos/200"
+          alt="random"
+          style={{ float: "left", marginRight: 20, marginBottom: 10 }}
+        />
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+          ultrices, arcu id sagittis rhoncus, mauris sapien vehicula nisl, ut
+          aliquet orci libero ut nunc. Sed in nunc ut turpis ultrices aliquet.
+          Nullam euismod, sem a luctus pretium, orci nisl ultrices tellus, vitae
+          aliquam nisl nisl quis orci. Proin vel erat sed ipsum ultrices
+          vestibulum. Nullam auctor, justo nec aliquam ultrices, ante nisi
+          sagittis felis, eu aliquet nisl nisl eu lectus. Sed euismod, velit
+        </p>
+        <p>
+          quis lacinia placerat, nisl nisl tincidunt lorem, nec tincidunt elit
+          massa non nisl. Nulla facilisi. Fusce euismod, justo sed ultricies
+          luctus, augue nisl aliquam enim, ac convallis nisl lorem quis erat.
+          Nullam euismod, sem a luctus pretium, orci nisl ultrices tellus, vitae
+          aliquam nisl nisl quis orci. Proin vel erat sed ipsum ultrices
+          vestibulum. Nullam auctor, justo nec aliquam ultrices, ante nisi
+          sagittis felis, eu aliquet nisl nisl eu lectus. Sed euismod, velit
+        </p>
+      </div>
+      <ResizeBothHandle />
+    </ResizeContainer>
+  );
+};
