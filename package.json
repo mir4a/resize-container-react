@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/mir4a"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Resizeable component for wrapping any content",
   "scripts": {
     "rollup": "rollup -c --bundleConfigAsCjs",
@@ -15,7 +15,8 @@
     "cypress:run": "cypress run",
     "stories": "ladle serve",
     "stories:build": "ladle build",
-    "e2e": "npm run stories & npm run cypress:run"
+    "e2e": "npm run stories & npm run cypress:run",
+    "prepare": "npm run rollup"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
