@@ -31,6 +31,7 @@ describe("Test resize", () => {
       .as("resizeBothHandle");
 
     cy.get("@resizeContainer").should((container) => {
+      // @ts-expect-error-next-line
       const { width, height, el } = container;
       const neWidth = el.width();
       const newHeight = el.height();

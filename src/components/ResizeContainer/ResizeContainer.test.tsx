@@ -17,6 +17,7 @@ describe("ResizeContainer", () => {
       </ResizeContainer>
     );
 
+    // @ts-expect-error
     expect(container).toMatchSnapshot();
   });
 });
