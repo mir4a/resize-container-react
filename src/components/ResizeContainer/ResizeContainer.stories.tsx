@@ -255,3 +255,31 @@ export const RTL = () => {
     </div>
   );
 };
+
+export const OnResizeCallback = () => {
+  return (
+    <ResizeContainer onResize={console.log}>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+        ultrices, arcu id sagittis rhoncus, mauris sapien vehicula nisl, ut
+        aliquet orci libero ut nunc. Sed in nunc ut turpis ultrices aliquet.
+        Nullam euismod, sem a luctus pretium, orci nisl ultrices tellus, vitae
+      </p>
+      <ResizeBothHandle />
+    </ResizeContainer>
+  );
+};
+
+export const OnResizeEndCallback = () => {
+  return (
+    <ResizeContainer onResizeEnd={console.log}>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+        ultrices, arcu id sagittis rhoncus, mauris sapien vehicula nisl, ut
+        aliquet orci libero ut nunc. Sed in nunc ut turpis ultrices aliquet.
+        Nullam euismod, sem a luctus pretium, orci nisl ultrices tellus, vitae
+      </p>
+      <ResizeBothHandle />
+    </ResizeContainer>
+  );
+};

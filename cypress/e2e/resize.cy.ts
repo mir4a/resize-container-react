@@ -8,8 +8,7 @@ describe("Test resize", () => {
       .then((el) => {
         const width = el.width();
         const height = el.height();
-        console.log("width", width);
-        console.log(el[0].getBoundingClientRect());
+
         return { width, height, el };
       })
       .as("resizeContainer");
@@ -19,8 +18,6 @@ describe("Test resize", () => {
         const left = $handle[0].getBoundingClientRect().left;
         const top = $handle[0].getBoundingClientRect().top;
 
-        console.log("left", left);
-        console.log("top", top);
         return cy
           .get("[data-testid='resize-both-handle']")
           .trigger("mousedown", { which: 1, pageX: left, pageY: top })

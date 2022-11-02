@@ -5,14 +5,19 @@ import ResizeWidthHandle from "../ResizeWidthHandle";
 
 import "./ResizeContainer.css";
 
+export interface OnResizeCallbackParams {
+  width?: number;
+  height?: number;
+}
+
 export interface ResizeContainerProps {
   children: React.ReactNode;
   style?: React.CSSProperties;
   initialWidth?: number;
   initialHeight?: number;
   isRTL?: boolean;
-  onResize?: () => void;
-  onResizeEnd?: () => void;
+  onResize?: ({ width, height }: OnResizeCallbackParams) => void;
+  onResizeEnd?: ({ width, height }: OnResizeCallbackParams) => void;
 }
 
 export interface DragParams {
@@ -26,6 +31,8 @@ const ResizeContainer: React.FC<ResizeContainerProps> = ({
   isRTL = false,
   initialWidth,
   initialHeight,
+  onResize,
+  onResizeEnd,
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const [height, setHeight] = React.useState<number | undefined>(() =>
@@ -50,14 +57,26 @@ const ResizeContainer: React.FC<ResizeContainerProps> = ({
 
   const onDrag = ({ deltaX, deltaY }: DragParams): void => {
     if (ref.current != null) {
+      let newWidth: number | undefined;
+      let newHeight: number | undefined;
+      if (prevWidth != null && deltaX != null) {
+        newWidth = prevWidth + deltaX;
+      }
+      if (prevHeight != null && deltaY != null) {
+        newHeight = prevHeight + deltaY;
+      }
+      onResize?.({ width: newWidth, height: newHeight });
       deltaX != null && prevWidth != null && setWidth(prevWidth + deltaX);
       deltaY != null && prevHeight != null && setHeight(prevHeight + deltaY);
     }
   };
 
   const onDragEnd = (): void => {
-    console.log("onDragEnd");
     if (ref.current != null) {
+      onResizeEnd?.({
+        width: ref.current.offsetWidth,
+        height: ref.current.offsetHeight,
+      });
       setPrevHeight(ref.current.offsetHeight);
       setPrevWidth(ref.current.offsetWidth);
     }
