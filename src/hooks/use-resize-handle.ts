@@ -22,27 +22,28 @@ const useResizeHandle = ({
   const ref = React.useRef<HTMLDivElement>(null);
   React.useLayoutEffect(() => {
     if (ref.current != null) {
-      ref.current.onmousedown = (e) => {
+      ref.current.onpointerdown = (e) => {
+        e.stopPropagation();
         e.preventDefault();
         const currentPositionX = e.pageX;
         const currentPositionY = e.pageY;
 
-        function onMouseMove(mouseMoveEvent: MouseEvent): void {
+        function onPointerMove(pointerMoveEvent: PointerEvent): void {
           let deltaX: number;
 
           if (isRTL) {
             // took some time to figure out direction here XD
-            if (mouseMoveEvent.pageX > currentPositionX) {
-              deltaX = -(mouseMoveEvent.pageX - currentPositionX);
-            } else if (mouseMoveEvent.pageX === currentPositionX) {
+            if (pointerMoveEvent.pageX > currentPositionX) {
+              deltaX = -(pointerMoveEvent.pageX - currentPositionX);
+            } else if (pointerMoveEvent.pageX === currentPositionX) {
               deltaX = 0;
             } else {
-              deltaX = currentPositionX - mouseMoveEvent.pageX;
+              deltaX = currentPositionX - pointerMoveEvent.pageX;
             }
           } else {
-            deltaX = mouseMoveEvent.pageX - currentPositionX;
+            deltaX = pointerMoveEvent.pageX - currentPositionX;
           }
-          const deltaY = mouseMoveEvent.pageY - currentPositionY;
+          const deltaY = pointerMoveEvent.pageY - currentPositionY;
 
           if (onDrag != null) {
             if (resizeType === ResizeType.Height) {
@@ -59,24 +60,24 @@ const useResizeHandle = ({
           }
         }
 
-        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("pointermove", onPointerMove);
 
-        document.onmouseleave = (mouseLeaveEvent: MouseEvent) => {
+        document.onpointerleave = (pointerLeaveEvent: PointerEvent) => {
           if (
-            mouseLeaveEvent.clientY <= 0 ||
-            mouseLeaveEvent.clientX <= 0 ||
-            mouseLeaveEvent.clientX >= window.innerWidth ||
-            mouseLeaveEvent.clientY >= window.innerHeight
+            pointerLeaveEvent.clientY <= 0 ||
+            pointerLeaveEvent.clientX <= 0 ||
+            pointerLeaveEvent.clientX >= window.innerWidth ||
+            pointerLeaveEvent.clientY >= window.innerHeight
           ) {
-            document.removeEventListener("mousemove", onMouseMove);
-            document.onmouseleave = null;
+            document.removeEventListener("pointermove", onPointerMove);
+            document.onpointerleave = null;
             onDragEnd?.();
           }
         };
 
-        document.onmouseup = () => {
-          document.removeEventListener("mousemove", onMouseMove);
-          document.onmouseup = null;
+        document.onpointerup = () => {
+          document.removeEventListener("pointermove", onPointerMove);
+          document.onpointerup = null;
           onDragEnd?.();
         };
       };
