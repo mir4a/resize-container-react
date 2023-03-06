@@ -4,7 +4,7 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "version": "1.0.2-pre1",
+  "version": "1.0.2-pre3",
   "description": "Resizeable component for wrapping any content",
   "scripts": {
     "rollup": "rollup -c --bundleConfigAsCjs",

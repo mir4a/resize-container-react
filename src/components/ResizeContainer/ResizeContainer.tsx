@@ -68,14 +68,16 @@ const ResizeContainer: React.FC<ResizeContainerProps> = ({
       if (prevHeight != null && deltaY != null) {
         newHeight = prevHeight + deltaY;
       }
-      onResize?.({ width: newWidth, height: newHeight });
       deltaX != null && prevWidth != null && setWidth(prevWidth + deltaX);
       deltaY != null && prevHeight != null && setHeight(prevHeight + deltaY);
+      onResize?.({ width: newWidth, height: newHeight });
     }
   };
 
   const onDragEnd = (): void => {
     if (ref.current != null) {
+      setPrevHeight(ref.current.offsetHeight);
+      setPrevWidth(ref.current.offsetWidth);
       onResizeEnd?.(
         {
           width: ref.current.offsetWidth,
@@ -83,8 +85,6 @@ const ResizeContainer: React.FC<ResizeContainerProps> = ({
         },
         ref
       );
-      setPrevHeight(ref.current.offsetHeight);
-      setPrevWidth(ref.current.offsetWidth);
     }
   };
 
