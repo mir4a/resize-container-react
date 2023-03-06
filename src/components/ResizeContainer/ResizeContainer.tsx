@@ -17,7 +17,10 @@ export interface ResizeContainerProps {
   initialHeight?: number;
   isRTL?: boolean;
   onResize?: ({ width, height }: OnResizeCallbackParams) => void;
-  onResizeEnd?: ({ width, height }: OnResizeCallbackParams) => void;
+  onResizeEnd?: (
+    { width, height }: OnResizeCallbackParams,
+    ref: React.Ref<HTMLDivElement>
+  ) => void;
 }
 
 export interface DragParams {
@@ -73,10 +76,13 @@ const ResizeContainer: React.FC<ResizeContainerProps> = ({
 
   const onDragEnd = (): void => {
     if (ref.current != null) {
-      onResizeEnd?.({
-        width: ref.current.offsetWidth,
-        height: ref.current.offsetHeight,
-      });
+      onResizeEnd?.(
+        {
+          width: ref.current.offsetWidth,
+          height: ref.current.offsetHeight,
+        },
+        ref
+      );
       setPrevHeight(ref.current.offsetHeight);
       setPrevWidth(ref.current.offsetWidth);
     }
