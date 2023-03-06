@@ -1,7 +1,8 @@
 {
   "name": "@mir4a/resize-container-react",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/mir4a"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "version": "1.0.1",
   "description": "Resizeable component for wrapping any content",
